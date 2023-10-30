@@ -11,6 +11,6 @@ public class ChatHub : Hub
 
   public override async Task OnConnectedAsync()
   {
-    await Clients.All.SendAsync("ReceiveMessage", Context.ConnectionId, "has joined.");
+    await Clients.All.SendAsync("ReceiveMessage", "ChatBot", $"{Context.ConnectionId} has joined.");
   }
 }

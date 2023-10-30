@@ -27,6 +27,7 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     var message = document.getElementById("messageInput").value;
     // Remotely call on our Hub's SendMessage method:
     document.getElementById("messageInput").value = null;
+    document.getElementById("messageInput").focus();
     connection.invoke("SendMessage", user, message).catch(function (err) {
         return console.error(err.toString());
     });

@@ -47,8 +47,6 @@ An AIM-inspired Message service for homies to chat and communicate on.
 
 ### 🐛 Known Bugs
 
-
-
 ### 🔨 Built With
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
@@ -125,7 +123,7 @@ An AIM-inspired Message service for homies to chat and communicate on.
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
-Copyright (c) Jake Elsberry, Joey Palchak, Paul LeTourneau, Moses Atia, Seth Gonzales
+Copyright (c) Jake Elsberry, Joey Palchak, Paul LeTourneau, Moses Atia Poston, Seth Gonzales
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
