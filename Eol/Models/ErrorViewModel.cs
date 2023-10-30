@@ -1,6 +1,6 @@
 #nullable enable
 
-namespace Eol.Solution.Models;
+namespace Eol.Models;
 
 public class ErrorViewModel
 {

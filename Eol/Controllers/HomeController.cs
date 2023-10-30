@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Eol.Solution.Models;
+using Eol.Models;
 
-namespace Eol.Solution.Controllers;
+namespace Eol.Controllers;
 
 public class HomeController : Controller
 {
