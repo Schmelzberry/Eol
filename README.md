@@ -19,18 +19,23 @@
     <a href="https://github.com/Schmelzberry">
         <strong>Schmelzberry</strong>
     </a>
+    <br>
        <a href="https://github.com/pletourneau">
         <strong>pletourneau</strong>
     </a>
+    <br>
        <a href="https://github.com/sethgonzales">
         <strong>sethgonzales</strong>
     </a>
+    <br>
        <a href="https://github.com/Object-ions">
         <strong>Object-ions</strong>
     </a>
+    <br>
        <a href="https://github.com/jfpalchak">
         <strong>jfpalchak</strong>
     </a>
+    <br>
   </p>
     
 ------------------------------
