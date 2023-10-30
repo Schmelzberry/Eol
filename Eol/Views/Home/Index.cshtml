@@ -2,21 +2,22 @@
     ViewData["Title"] = "Home Page";
 }
 <!-- // atSymbol Page was here (if anything breaks) -->
-
 <div class="container">
-    <div class="row p-1">
-        <div class="col-1">User</div>
-        <div class="col-5"><input type="text" id="userInput" /></div>
-    </div>
-    <div class="row p-1">
-        <div class="col-1">Message</div>
-        <div class="col-5"><input type="text" class="w-100" id="messageInput" placeholder="Message"/></div>
-    </div>
-    <div class="row p-1">
-        <div class="col-6 text-end">
-            <input type="button" id="sendButton" value="Send Message" />
+    <form id="chat-form"> 
+        <div class="row p-1">
+            <div class="col-1">Hello @User.Identity.Name</div>
+            <div class="col-5"><input type="hidden" id="userInput" value="@User.Identity.Name" /></div>
         </div>
-    </div>
+        <div class="row p-1">
+            <!-- <div class="col-1">Message</div> -->
+            <div class="col-5"><input type="text" class="w-100" id="messageInput" placeholder="Type Message Here"/></div>
+        </div>
+        <div class="row p-1">
+            <div class="col-6 text-end">
+                <input type="submit" id="sendButton" value="Send Message" />
+            </div>
+        </div>
+    </form>
     <div class="row p-1">
         <div class="col-6">
             <hr />
@@ -26,7 +27,7 @@
         <div class="col-6">
             <ul id="messagesList"></ul>
         </div>
-    </div>
+    </div> 
 </div>
 
 <script src="~/js/signalr/dist/browser/signalr.js"></script>

@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace Eol.Hubs;
 
@@ -11,6 +13,6 @@ public class ChatHub : Hub
 
   public override async Task OnConnectedAsync()
   {
-    await Clients.All.SendAsync("ReceiveMessage", "ChatBot", $"{Context.ConnectionId} has joined.");
+    await Clients.All.SendAsync("ReceiveMessage", "ChatBot", $"{Context.User.Identity.Name} has joined.");
   }
 }

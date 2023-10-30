@@ -22,14 +22,18 @@ connection.start().then(function () {
     return console.error(err.toString());
 });
 
-document.getElementById("sendButton").addEventListener("click", function (event) {
+document.getElementById("chat-form").addEventListener("submit", function (event) {
+
+    event.preventDefault();
+    
     var user = document.getElementById("userInput").value;
     var message = document.getElementById("messageInput").value;
     // Remotely call on our Hub's SendMessage method:
     document.getElementById("messageInput").value = null;
     document.getElementById("messageInput").focus();
+    
     connection.invoke("SendMessage", user, message).catch(function (err) {
         return console.error(err.toString());
     });
-    event.preventDefault();
+    // event.preventDefault();
 });
