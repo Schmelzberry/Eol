@@ -121,16 +121,6 @@ An AIM-inspired Message service for homies to chat and communicate on.
 3) Change the server, port, and user id as necessary. Replace 'Password' with your own relevant MySQL password and userId. (set at installation of MySQL).
 
 
-
-
-### 🤝 Contributors
-
-| LinkedIn | GitHub | 
-|--------|:------:|
-Jake Elsberry, Joey Palchak, Paul LeTourneau, Moses Atia, Seth Gonzales
-
-------------------------------
-
 ### ⚖️ License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
