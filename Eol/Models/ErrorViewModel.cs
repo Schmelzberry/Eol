@@ -1,3 +1,5 @@
+#nullable enable
+
 namespace Eol.Solution.Models;
 
 public class ErrorViewModel
