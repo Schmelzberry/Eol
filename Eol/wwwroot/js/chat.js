@@ -16,14 +16,25 @@ connection.on("ReceiveMessage", function (user, message) {
     li.textContent = `${user}: ${message}`;
 });
 
-connection.on("UserConnected", function(userName) {
-    // let onlineUserList = document.getElementById("online-users");
-    let li = document.createElement("li");
-    document.getElementById("online-users").appendChild(li);
+// connection.on("UserConnected", function(userName) {
+//     // let onlineUserList = document.getElementById("online-users");
+//     let li = document.createElement("li");
+//     document.getElementById("online-users").appendChild(li);
 
-    li.textContent = userName;
+//     li.textContent = userName;
 
-    // onlineUserList.appendChild(listItem);
+//     // onlineUserList.appendChild(listItem);
+// });
+
+    connection.on("ConnectedUsers", function (users) {
+    const onlineUsersList = document.getElementById("online-users");
+    onlineUsersList.innerHTML = ''; // Clear the list before updating
+    
+    users.forEach(function (user) {
+        const listItem = document.createElement("li");
+        listItem.textContent = user;
+        onlineUsersList.appendChild(listItem);
+    });
 });
 
 connection.start().then(function () {
@@ -44,6 +55,12 @@ document.getElementById("chat-form").addEventListener("submit", function (event)
     
     connection.invoke("SendMessage", user, message).catch(function (err) {
         return console.error(err.toString());
+
+        
+
     });
     // event.preventDefault();
+
+
+    
 });

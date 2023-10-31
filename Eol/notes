@@ -57,38 +57,41 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 document.getElementById("sendButton").disabled = true;
 document.getElementById("userInput").focus();
 
-connection.on("ReceiveMessage", function (user, message) {
+connection.on("ReceiveMessage", function(user, message) {
     var li = document.createElement("li");
     document.getElementById("messagesList").appendChild(li);
-    li.textContent = `${user}: ${message}`;
+    li.textContent = `${ user}: ${ message}`;
 });
 
-connection.on("ReceivePrivateMessage", function (user, message) {
+connection.on("ReceivePrivateMessage", function(user, message) {
     // Handle incoming private messages differently.
     var li = document.createElement("li");
     document.getElementById("messagesList").appendChild(li);
-    li.textContent = `Private message from ${user}: ${message}`;
+    li.textContent = `Private message from ${ user}: ${ message}`;
 });
 
-connection.start().then(function () {
+connection.start().then(function() {
     document.getElementById("sendButton").disabled = false;
-}).catch(function (err) {
+}).catch(function(err) {
     return console.error(err.toString());
 });
 
-document.getElementById("chat-form").addEventListener("submit", function (event) {
+document.getElementById("chat-form").addEventListener("submit", function(event) {
     event.preventDefault();
     var user = document.getElementById("userInput").value;
     var message = document.getElementById("messageInput").value;
 
-    if (user === "all") {
+    if (user === "all")
+    {
         // Send a public message if user is "all".
-        connection.invoke("SendMessage", user, message).catch(function (err) {
+        connection.invoke("SendMessage", user, message).catch(function(err) {
             return console.error(err.toString());
         });
-    } else {
+    }
+    else
+    {
         // Send a private message if user is not "all".
-        connection.invoke("SendPrivateMessage", user, message).catch(function (err) {
+        connection.invoke("SendPrivateMessage", user, message).catch(function(err) {
             return console.error(err.toString());
         });
     }
@@ -106,3 +109,44 @@ document.getElementById("chat-form").addEventListener("submit", function (event)
 //Remember that you'll need to handle user validation and ensure that users are authenticated before allowing them to send or receive private messages.
 
 //With these modifications, your SignalR chat application should be capable of sending private direct messages to selected users.
+
+
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
+
+namespace Eol.Hubs
+{
+    public class ChatHub : Hub
+    {
+        private static List<string> onlineUsers = new List<string>();
+
+        public override async Task OnConnectedAsync()
+        {
+            string userName = Context.User.Identity.Name;
+            onlineUsers.Add(userName);
+
+            await Clients.All.SendAsync("UserConnected", userName);
+            await Clients.All.SendAsync("ReceiveMessage", "ChatBot", $"{userName} has joined.");
+        }
+
+        // Your existing SendMessage and UserConnected methods...
+
+        public override async Task OnDisconnectedAsync(Exception exception)
+        {
+            string userName = Context.User.Identity.Name;
+            onlineUsers.Remove(userName);
+            await Clients.All.SendAsync("UserDisconnected", userName);
+            await base.OnDisconnectedAsync(exception);
+        }
+    }
+}
+
+
+git commit -m "users can login and chat
+
+
+Co-authored-by: Moshe Atia<moshikoatia@gmail.com>
+Co-authored-by: Seth Gonzales<sethgonzales157@gmail.com>
+Co-authored-by: Joey Palchak<joey.palchak@gmail.com>
+Co-authored-by: Jake Elsberry<jelsberry96@gmail.com>"
