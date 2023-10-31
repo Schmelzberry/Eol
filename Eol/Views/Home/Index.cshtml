@@ -26,17 +26,28 @@
     </div>
     <div class="row p-1">
 
-        <div class="col-5">
+        <div class="col-3">
             <h5>Online Users</h5>
             <ul id="online-users"></ul>
         </div>
 
-        <div class="col-6">
+        <div class="col-4">
             <ul id="messagesList"></ul>
         </div>
+        <div  class="col-4">
+            <h3>Private Chat</h3>
+            <div id="private-chat-container">
+            </div>
+            <!-- <ul id="pvtMessagesList"></ul>
+            <input type="text" id="private-message-input" placeholder="Type a private message..." />
+        <button id="private-send-button">Send</button> -->
+        
+        </div>
     </div>
+    
 </div>
 
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 @* The Following script is what will update our main chat page: *@
 <script src="~/js/chat.js"></script>
+@* <script src="~/js/pvtchat.js"></script> *@

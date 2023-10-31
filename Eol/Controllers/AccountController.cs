@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Identity;
 using Eol.Models;
 using System.Threading.Tasks;
 using Eol.ViewModels;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace Eol.Controllers
 {
@@ -12,10 +15,10 @@ namespace Eol.Controllers
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
 
-    public AccountController (UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, EolContext db)
+    public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, EolContext db)
     {
       _userManager = userManager;
-      _signInManager = signInManager; 
+      _signInManager = signInManager;
       _db = db;
     }
 
@@ -30,7 +33,7 @@ namespace Eol.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult> Register (RegisterViewModel model)
+    public async Task<ActionResult> Register(RegisterViewModel model)
     {
       if (!ModelState.IsValid)
       {
@@ -67,14 +70,14 @@ namespace Eol.Controllers
       {
         return View(model);
       }
-      else 
+      else
       {
         Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, isPersistent: true, lockoutOnFailure: false);
         if (result.Succeeded)
         {
           return RedirectToAction("Index");
         }
-        else 
+        else
         {
           ModelState.AddModelError("", "There is something wrong with your email or username. Please try again.");
           return View(model);

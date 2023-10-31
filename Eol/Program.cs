@@ -49,7 +49,7 @@ app.MapControllerRoute(
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapHub<ChatHub>("/chathub");
-    endpoints.MapHub<PvtHub>("/pvthub");
+    // endpoints.MapHub<PvtHub>("/pvthub");
 });
 // app.MapHub<ChatHub>("/chatHub");
 

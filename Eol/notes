@@ -143,10 +143,12 @@ namespace Eol.Hubs
 }
 
 
-git commit -m "users can login and chat
 
 
-Co-authored-by: Moshe Atia<moshikoatia@gmail.com>
+
+Co - authored - by: Moshe Atia<moshikoatia@gmail.com>
 Co-authored-by: Seth Gonzales<sethgonzales157@gmail.com>
 Co-authored-by: Joey Palchak<joey.palchak@gmail.com>
 Co-authored-by: Jake Elsberry<jelsberry96@gmail.com>"
+
+
