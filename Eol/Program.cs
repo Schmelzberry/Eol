@@ -46,6 +46,29 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 // Tells our Application how to handle real time updates with SignalR
-app.MapHub<ChatHub>("/chatHub");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHub<ChatHub>("/chathub");
+    endpoints.MapHub<PvtHub>("/pvthub");
+});
+// app.MapHub<ChatHub>("/chatHub");
 
 app.Run();
+
+
+
+
+
+
+
+
+
+
+
+
+// // In Startup.cs, configure routing
+// app.UseEndpoints(endpoints =>
+// {
+//     endpoints.MapHub<ChatHub>("/chathub");
+//     endpoints.MapHub<DashboardHub>("/dashboardhub");
+// });

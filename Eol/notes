@@ -7,3 +7,102 @@ messageInput.addEventListener("keyup", function(event) {
         document.getElementById("sendButton").click();
     }
 });
+
+
+
+
+//To send private direct messages to a selected user in an MVC application using SignalR, you can modify your existing `ChatHub` and client-side JavaScript code. Here's how you can achieve this:
+
+//1. **Update the ChatHub.cs:**
+
+//In the `ChatHub` class, you can add a method to send private messages. The method should take the recipient's username and the message. Here's how you can modify your `ChatHub`:
+
+//csharp
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNetCore.Identity;
+
+public class ChatHub : Hub
+{
+    public async Task SendMessage(string user, string message)
+    {
+        await Clients.All.SendAsync("ReceiveMessage", user, message);
+    }
+
+    public async Task SendPrivateMessage(string user, string message)
+    {
+        // Validate that the sender and recipient are valid users in your system.
+        // You can use your user management and validation logic here.
+
+        // Send the message to the specified user only.
+        await Clients.User(user).SendAsync("ReceivePrivateMessage", Context.User.Identity.Name, message);
+    }
+
+    public override async Task OnConnectedAsync()
+    {
+        await Clients.All.SendAsync("ReceiveMessage", "ChatBot", $"{Context.User.Identity.Name} has joined.");
+    }
+}
+
+
+//2. *Update chat.js:**
+
+//In your `chat.js`, you need to modify it to handle private messages. Here's an updated version:
+
+javascript
+"use strict";
+
+var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+// Disable the send button until connection is established.
+document.getElementById("sendButton").disabled = true;
+document.getElementById("userInput").focus();
+
+connection.on("ReceiveMessage", function (user, message) {
+    var li = document.createElement("li");
+    document.getElementById("messagesList").appendChild(li);
+    li.textContent = `${user}: ${message}`;
+});
+
+connection.on("ReceivePrivateMessage", function (user, message) {
+    // Handle incoming private messages differently.
+    var li = document.createElement("li");
+    document.getElementById("messagesList").appendChild(li);
+    li.textContent = `Private message from ${user}: ${message}`;
+});
+
+connection.start().then(function () {
+    document.getElementById("sendButton").disabled = false;
+}).catch(function (err) {
+    return console.error(err.toString());
+});
+
+document.getElementById("chat-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    var user = document.getElementById("userInput").value;
+    var message = document.getElementById("messageInput").value;
+
+    if (user === "all") {
+        // Send a public message if user is "all".
+        connection.invoke("SendMessage", user, message).catch(function (err) {
+            return console.error(err.toString());
+        });
+    } else {
+        // Send a private message if user is not "all".
+        connection.invoke("SendPrivateMessage", user, message).catch(function (err) {
+            return console.error(err.toString());
+        });
+    }
+
+    document.getElementById("messageInput").value = null;
+    document.getElementById("messageInput").focus();
+});
+
+//In this updated JavaScript code, we added a separate event handler for receiving private messages and modified the `SendPrivateMessage` method to send private messages to a specific user by using the `Clients.User(user).SendAsync(...)` function.
+
+//3 **Usage in the Client:**
+
+//To send a private message to a specific user, you can enter the username of the recipient in the "To" field in your chat interface and then type your message. The server-side logic will ensure that the message is delivered only to the specified recipient.
+
+//Remember that you'll need to handle user validation and ensure that users are authenticated before allowing them to send or receive private messages.
+
+//With these modifications, your SignalR chat application should be capable of sending private direct messages to selected users.

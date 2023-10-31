@@ -16,6 +16,16 @@ connection.on("ReceiveMessage", function (user, message) {
     li.textContent = `${user}: ${message}`;
 });
 
+connection.on("UserConnected", function(userName) {
+    // let onlineUserList = document.getElementById("online-users");
+    let li = document.createElement("li");
+    document.getElementById("online-users").appendChild(li);
+
+    li.textContent = userName;
+
+    // onlineUserList.appendChild(listItem);
+});
+
 connection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
 }).catch(function (err) {

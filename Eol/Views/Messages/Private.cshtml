@@ -1,0 +1,35 @@
+@{
+  ViewData["Title"] = "PvtChat Page";
+}
+<!-- // atSymbol Page was here (if anything breaks) -->
+<div class="container">
+  <form id="chat-form">
+    <div class="row p-1">
+      <div class="col-1">Hello @User.Identity.Name</div>
+      <div class="col-5"><input type="hidden" id="userInput" value="@User.Identity.Name" /></div>
+    </div>
+    <div class="row p-1">
+      <!-- <div class="col-1">Message</div> -->
+      <div class="col-5"><input type="text" class="w-100" id="messageInput" placeholder="Type Message Here" /></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-6 text-end">
+        <input type="submit" id="sendButton" value="Send Message" />
+      </div>
+    </div>
+  </form>
+  <div class="row p-1">
+    <div class="col-6">
+      <hr />
+    </div>
+  </div>
+  <div class="row p-1">
+    <div class="col-6">
+      <ul id="messagesList"></ul>
+    </div>
+  </div>
+</div>
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+@* The Following script is what will update our main chat page: *@
+<script src="~/js/pvtchat.js"></script>

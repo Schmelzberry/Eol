@@ -3,14 +3,15 @@
 }
 <!-- // atSymbol Page was here (if anything breaks) -->
 <div class="container">
-    <form id="chat-form"> 
+    <form id="chat-form">
         <div class="row p-1">
             <div class="col-1">Hello @User.Identity.Name</div>
             <div class="col-5"><input type="hidden" id="userInput" value="@User.Identity.Name" /></div>
         </div>
         <div class="row p-1">
             <!-- <div class="col-1">Message</div> -->
-            <div class="col-5"><input type="text" class="w-100" id="messageInput" placeholder="Type Message Here"/></div>
+            <div class="col-5"><input type="text" class="w-100" id="messageInput" placeholder="Type Message Here" />
+            </div>
         </div>
         <div class="row p-1">
             <div class="col-6 text-end">
@@ -24,10 +25,15 @@
         </div>
     </div>
     <div class="row p-1">
+        <div class="col-5">
+            <h5>Online Users</h5>
+            <ul id=></ul>
+        </div>
+
         <div class="col-6">
             <ul id="messagesList"></ul>
         </div>
-    </div> 
+    </div>
 </div>
 
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
