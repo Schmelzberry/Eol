@@ -132,7 +132,7 @@ function createPrivateChatBox(selectedUser) {
             <form id="private-chat-form-${selectedUser}" class="message-input">
                 <input type="text" class="private-chat-form" id="private-messageInput-${selectedUser}" placeholder="Type Message..." />
                 <br>
-                <input class="send" type="submit" id="private-sendButton-${selectedUser}" />
+                <input type="submit" id="private-sendButton-${selectedUser}" />
             </form>
         `;
       

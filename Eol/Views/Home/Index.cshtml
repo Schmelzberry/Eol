@@ -4,15 +4,15 @@
 <!-- // atSymbol Page was here (if anything breaks) -->
 <div class="main-body"> 
     <div class="usersContainer"> 
-        <h5 class="heading">Online Users</h5>
-        <div class="users-list">
+        <h5 class="heading users-heading">Online Users</h5>
+        <div class="inner-white-box users-box">
             <ul id="online-users"></ul>
         </div>
     </div>
         
     <div class="publicContainer"> 
         <h5 class="heading">Public Chat</h5>
-        <div class="public-chat">
+        <div class="inner-white-box">
             <ul id="messagesList"></ul>
             <form id="chat-form" class="message-input">
                 <input type="hidden" id="userInput" value="@User.Identity.Name" />
@@ -22,9 +22,8 @@
         </div>
     </div>
     <div class="privateContainer"> 
-        <h5 class="heading">Private Chats</h5>
-        <!-- <h3>Private Chat</h3> -->
-        <div id="private-chat-container">            
+        <h5 class="heading private-heading">Private Chats</h5>
+        <div id="private-chat-container" class="inner-white-box private-box" >            
             <!-- class="private-chat-box" for the private chats that are made-->
         </div>
     </div>
