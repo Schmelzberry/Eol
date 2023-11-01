@@ -10,11 +10,6 @@
 
 <div class="row justify-content-center register-page">
 
-@if(!ViewData.ModelState.IsValid)
-{
-  @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:")
-}
-
   <div class="container col-4">
     <div class="card register-card">
       <div class="card-header">
@@ -47,10 +42,31 @@
           <br/>
           <div class="register-links">
             <input type="submit" value="Register" class="btn btn-primary"/>
+            <br/>
+            <br/>
             <p>@Html.ActionLink("Log In", "Login")</p>
             <p>@Html.ActionLink("Go Back", "Index")</p>
           </div>
         }
     </div>
   </div>
+  </div>
+  
+  @if(!ViewData.ModelState.IsValid)
+    {
+      <div class="container col-4">
+        <div class="card">
+          <div class="card-header">
+            Registration Error
+            <span class="close-register-error" style="float: right;">
+              @Html.ActionLink("X", "Register")
+            </span>
+          </div>
+          <div class="card-body">
+            @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:", new { @class = "text-danger" })
+          </div>
+        </div>
+      </div>
+    }
+
 </div>
