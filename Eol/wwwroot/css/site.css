@@ -33,6 +33,39 @@ body {
 .container {
   margin: 0;
 }
+.private-chat-form {
+  width: 100%;
+  height: 50px;
+}
+.private-chat-box {
+  border: solid;
+  height: 300px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  resize: none;
+  overflow: auto;
+  
+}
+.private-chat-header {
+  width: 100%;
+  font-size: 1.3rem;
+  color: #B2B1B3;
+  background-color: #14017A;
+}
+.message-window {
+  border: solid;
+  border-width: 1px;
+  border-color: #B2B1B3;
+  width: 100%;
+  height: 150px;
+  resize: none;
+  overflow: auto;
+}
+.exit-button {
+  float: right;
+  /* background-image: url('~/img/close-icon.svg'); */
+}
 
 /* #box1 {
   box-sizing: border-box;

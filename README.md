@@ -47,6 +47,8 @@ An AIM-inspired Message service for homies to chat and communicate on.
 
 ### 🐛 Known Bugs
 
+* Online User list prints list of users at time of connection, but we want it to update dynamically as people come and go.
+
 ### 🔨 Built With
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
