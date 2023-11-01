@@ -6,14 +6,18 @@
 
 @model LoginViewModel
 
-<h2>Log in with your account</h2>
-<hr/>
+<!-- <h2>Log in with your account</h2>
+<hr/> -->
+<br/>
+<br/>
 
 <div class="row justify-content-center login-page">
   <div class="container col-4">
     <div class="card login-card">
       <div class="card-header">
-        Log In
+        <div class="login-banner">
+          Log In
+        </div>
       </div>
       <div class="card-body" style="text-align:center;">
         <br/>
@@ -24,17 +28,15 @@
       <div class="card-body">
         @using (Html.BeginForm())
         {
-          @Html.LabelFor(m => m.UserName)
+          @Html.LabelFor(m => m.UserName, new { @class="account-label" })
+          @Html.TextBoxFor(m => m.UserName, new { @class="form-control account-input login-input" })
           <br/>
-          @Html.TextBoxFor(m => m.UserName, new { @class="form-control" })
-          <br/>
-          @Html.LabelFor(m => m.Password)
-          <br/>
-          @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class="form-control" }})
+          @Html.LabelFor(m => m.Password, new { @class="account-label" })
+          @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class="form-control account-input login-input" }})
           <br/>
           <br/>
           <div class="login-links">
-            <input type="submit" value="Log In" class="btn btn-primary" />
+            <input type="submit" value="Log In" class="btn-lg btn-login" />
             <br/>
             <br/>
             <p>@Html.ActionLink("Register Account", "Register")</p>
@@ -43,17 +45,20 @@
         }
       </div>
     </div>
+    <br/>
   </div>
 
     @if(!ViewData.ModelState.IsValid)
     {
       <div class="container col-4">
-        <div class="card">
+        <div class="card error-card">
           <div class="card-header">
-            Log In Error
-            <span class="close-login-error" style="float: right;">
+            <div class="error-banner">
+              Log In Error
+              <span class="close-error" style="float: right;">
               @Html.ActionLink("X", "Login")
-            </span>
+              </span>
+            </div>
           </div>
           <div class="card-body">
             @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:", new { @class = "text-danger" })

@@ -5,15 +5,20 @@
 @using Eol.ViewModels
 @model RegisterViewModel
 
-<h2>Register a new user</h2>
-<hr/>
+<!-- <h2>Register a new user</h2>
+<hr/> -->
+
+<br/>
+<br/>
 
 <div class="row justify-content-center register-page">
 
   <div class="container col-4">
     <div class="card register-card">
       <div class="card-header">
-        Register
+        <div class="register-banner">
+          Register
+        </div>
       </div>
       <div class="card-body" style="text-align:center;">
         <br/>
@@ -26,22 +31,22 @@
         {
           @Html.LabelFor(user => user.UserName)
           <br/>
-          @Html.TextBoxFor(user => user.UserName, new { @class="form-control" })
+          @Html.TextBoxFor(user => user.UserName, new { @class="form-control account-input" })
           <br/>
           @Html.LabelFor(user => user.Email)
           <br/>
-          @Html.TextBoxFor(user => user.Email, new { @class="form-control" })
+          @Html.TextBoxFor(user => user.Email, new { @class="form-control account-input" })
           <br/>
           @Html.LabelFor(user => user.Password)
           <br/>
-          @Html.EditorFor(user => user.Password, new { htmlAttributes = new { @class="form-control" }})
+          @Html.EditorFor(user => user.Password, new { htmlAttributes = new { @class="form-control account-input" }})
           @Html.LabelFor(user => user.ConfirmPassword)
           <br/>
-          @Html.EditorFor(user => user.ConfirmPassword, new { htmlAttributes = new { @class="form-control" }})
+          @Html.EditorFor(user => user.ConfirmPassword, new { htmlAttributes = new { @class="form-control account-input" }})
           <br/>
           <br/>
           <div class="register-links">
-            <input type="submit" value="Register" class="btn btn-primary"/>
+            <input type="submit" value="Register" class="btn-lg btn-register"/>
             <br/>
             <br/>
             <p>@Html.ActionLink("Log In", "Login")</p>
@@ -50,17 +55,20 @@
         }
     </div>
   </div>
+  <br/>
   </div>
   
   @if(!ViewData.ModelState.IsValid)
     {
       <div class="container col-4">
-        <div class="card">
+        <div class="card error-card">
           <div class="card-header">
-            Registration Error
-            <span class="close-register-error" style="float: right;">
-              @Html.ActionLink("X", "Register")
-            </span>
+            <div class="error-banner">
+              Registration Error
+              <span class="close-error" style="float: right;">
+                @Html.ActionLink("X", "Register")
+              </span>
+            </div>
           </div>
           <div class="card-body">
             @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:", new { @class = "text-danger" })
