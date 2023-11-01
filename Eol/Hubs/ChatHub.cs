@@ -17,13 +17,15 @@ public class ChatHub : Hub
   public override async Task OnConnectedAsync()
   {
     string userName = Context.User.Identity.Name;
-    connectedUsers.Add(userName);
+    if (!connectedUsers.Any(e => e == userName))
+    {
+      connectedUsers.Add(userName);
+      connectedUsersDict.Add(userName, Context.ConnectionId);
+    }
 
-    connectedUsersDict.Add(userName, Context.ConnectionId);
+    // await Clients.All.SendAsync("UserConnected", userName);
 
-    await Clients.All.SendAsync("UserConnected", userName);
-
-    await Clients.Caller.SendAsync("ConnectedUsers", connectedUsers);
+    await Clients.All.SendAsync("ConnectedUsers", connectedUsers);
 
     await Clients.All.SendAsync("ReceiveMessage", "ChatBot", $"{Context.User.Identity.Name} has joined.");
 
@@ -36,7 +38,7 @@ public class ChatHub : Hub
     connectedUsers.Remove(userName);
     connectedUsersDict.Remove(userName);
 
-    await Clients.All.SendAsync("UserDisconnected", userName);
+    // await Clients.All.SendAsync("UserDisconnected", userName);
     await Clients.All.SendAsync("ConnectedUsers", connectedUsers);
 
     await base.OnDisconnectedAsync(exception);
