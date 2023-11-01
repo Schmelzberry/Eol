@@ -23,38 +23,47 @@ connection.on("ReceiveOwnPrivateMessage", function(selectedUser, fromUser, messa
     li.textContent = `${fromUser}: ${message}`;
 });
 
-connection.on("ReceivePrivateMessage", function (fromUser, message) {
+connection.on("ReceivePrivateMessage", function (selectedUser, fromUser, message) {
     var li = document.createElement("li");
-    const chatContainer = document.getElementById("private-chat-container");
-    const existingChatBox = document.getElementById(`private-chat-${fromUser}`);
-    if (!existingChatBox) {
-        const chatBox = document.createElement("div");
-        chatBox.id = `private-chat-${fromUser}`;
-        chatBox.className = "private-chat-box";
-        chatBox.innerHTML = `
-            <h3>Private Chat with ${fromUser}</h3>
-            <ul id="private-messagesList-${fromUser}"></ul>
-            <form id="private-chat-form-${fromUser}">
-                <input type="text" id="private-messageInput-${fromUser}" placeholder="Type Message Here" />
-                <input type="submit" id="private-sendButton-${fromUser}" value="Send Message" />
-            </form>
-        `;
-        // Add the chat box to the container
-        chatContainer.appendChild(chatBox);
+    // const chatContainer = document.getElementById("private-chat-container");
+    // const existingChatBox = document.getElementById(`private-chat-${fromUser}`);
+    // if (!existingChatBox) {
+    //     const chatBox = document.createElement("div");
+    //     chatBox.id = `private-chat-${fromUser}`;
+    //     chatBox.className = "private-chat-box";
+    //     chatBox.innerHTML = `
+    //         <input type="button" id="close-private-${fromUser}" value="X" />
+    //         <h3>Private Chat with ${fromUser}</h3>
+    //         <ul id="private-messagesList-${fromUser}"></ul>
+    //         <form id="private-chat-form-${fromUser}">
+    //             <input type="text" id="private-messageInput-${fromUser}" placeholder="Type Message Here" />
+    //             <input type="submit" id="private-sendButton-${fromUser}" value="Send Message" />
+    //         </form>
+    //     `;
+    //     // Add the chat box to the container
+    //     chatContainer.appendChild(chatBox);
 
-        // Add an event listener to the new chat box to send private messages
-        const chatForm = document.getElementById(`private-chat-form-${fromUser}`);
-        chatForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            const message = document.getElementById(`private-messageInput-${fromUser}`).value;
-            connection.invoke("SendPrivateMessage", fromUser, message).catch(function (err) {
-                return console.error(err.toString());
-            });
-            document.getElementById(`private-messageInput-${fromUser}`).value = null;
-        });
-        document.getElementById(`private-messagesList-${fromUser}`).appendChild(li);
-    }
+    //     // Add an event listener to the new chat box to send private messages
+    //     const chatForm = document.getElementById(`private-chat-form-${fromUser}`);
+    //     chatForm.addEventListener("submit", function (event) {
+    //         event.preventDefault();
+    //         const message = document.getElementById(`private-messageInput-${fromUser}`).value;
+    //         connection.invoke("SendPrivateMessage", fromUser, message).catch(function (err) {
+    //             return console.error(err.toString());
+    //         });
+    //         document.getElementById(`private-messageInput-${fromUser}`).value = null;
+    //     });
+
+    //     const closeBtn = document.getElementById(`close-private-${selectedUser}`);
+    //     closeBtn.addEventListener("click", function() {
+    //         closeBtn.parentElement.remove();
+    //     });
+
+    //     document.getElementById(`private-messagesList-${fromUser}`).appendChild(li);
+    // }
     
+    createPrivateChatBox(fromUser);
+
     document.getElementById(`private-messagesList-${fromUser}`).appendChild(li);
     li.textContent = `${fromUser}: ${message}`;
 });
@@ -115,6 +124,7 @@ function createPrivateChatBox(selectedUser) {
         chatBox.id = `private-chat-${selectedUser}`;
         chatBox.className = "private-chat-box";
         chatBox.innerHTML = `
+            <input type="button" id="close-private-${selectedUser}" value="X" />
             <h3>Private Chat with ${selectedUser}</h3>
             <ul id="private-messagesList-${selectedUser}"></ul>
             <form id="private-chat-form-${selectedUser}">
@@ -136,8 +146,14 @@ function createPrivateChatBox(selectedUser) {
             });
             document.getElementById(`private-messageInput-${selectedUser}`).value = null;
         });
+        
+        const closeBtn = document.getElementById(`close-private-${selectedUser}`);
+        closeBtn.addEventListener("click", function() {
+            closeBtn.parentElement.remove();
+        });
     }
 }
+
 
 document.getElementById("chat-form").addEventListener("submit", function (event) {
 
