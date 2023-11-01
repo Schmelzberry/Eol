@@ -13,14 +13,14 @@ connection.on("ReceiveMessage", function (user, message) {
     // We can assign user-supplied strings to an element's textContent because it
     // is not interpreted as markup. If you're assigning in any other way, you 
     // should be aware of possible script injection concerns.
-    li.textContent = `${user}: ${message}`;
+    li.innerHTML = `<span class="chatroom-sender">${user}</span>: <span class="chatroom-message">${message}</span>`;
 });
 
 connection.on("ReceiveOwnPrivateMessage", function(selectedUser, fromUser, message) {
     var li = document.createElement("li");
     document.getElementById(`private-messagesList-${selectedUser}`).appendChild(li);
 
-    li.textContent = `${fromUser}: ${message}`;
+    li.innerHTML = `<span class="text-primary">${fromUser}</span>: ${message}`;
 });
 
 connection.on("ReceivePrivateMessage", function (selectedUser, fromUser, message) {
@@ -36,7 +36,7 @@ connection.on("ReceivePrivateMessage", function (selectedUser, fromUser, message
     //         <h3>Private Chat with ${fromUser}</h3>
     //         <ul id="private-messagesList-${fromUser}"></ul>
     //         <form id="private-chat-form-${fromUser}">
-    //             <input type="text" id="private-messageInput-${fromUser}" placeholder="Type Message Here" />
+    //             <input type="text" id="private-messageInput-${fromUser}" placeholder="Type Message..." />
     //             <input type="submit" id="private-sendButton-${fromUser}" value="Send Message" />
     //         </form>
     //     `;
@@ -65,7 +65,7 @@ connection.on("ReceivePrivateMessage", function (selectedUser, fromUser, message
     createPrivateChatBox(fromUser);
 
     document.getElementById(`private-messagesList-${fromUser}`).appendChild(li);
-    li.textContent = `${fromUser}: ${message}`;
+    li.innerHTML = `<span class="text-danger">${fromUser}</span>: ${message}`;
 });
 
 // connection.on("UserConnected", function(userName) {
@@ -126,13 +126,13 @@ function createPrivateChatBox(selectedUser) {
         chatBox.innerHTML = `
             <input type="button" class="btn-close" id="close-private-${selectedUser}"/>
             
-            <h3 class="private-chat-header"><img src="../img/keithsHat.jpeg">${selectedUser}</h3>
+            <h3 class="private-chat-header"><img class="hat" src="../img/keithsHat.svg">${selectedUser}</h3>
             
             <ul class="message-window" id="private-messagesList-${selectedUser}"></ul>
-            <form id="private-chat-form-${selectedUser}">
-                <input type="text" class="private-chat-form" id="private-messageInput-${selectedUser}" placeholder="Type Message Here" />
+            <form id="private-chat-form-${selectedUser}" class="message-input">
+                <input type="text" class="private-chat-form" id="private-messageInput-${selectedUser}" placeholder="Type Message..." />
                 <br>
-                <input type="submit" id="private-sendButton-${selectedUser}" value="Send Message" />
+                <input class="send" type="submit" id="private-sendButton-${selectedUser}" />
             </form>
         `;
       
