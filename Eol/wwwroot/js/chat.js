@@ -124,10 +124,10 @@ function createPrivateChatBox(selectedUser) {
         chatBox.id = `private-chat-${selectedUser}`;
         chatBox.className = "private-chat-box";
         chatBox.innerHTML = `
-            <div class="private-chat-header">
-                <input type="button" class="exit-button" id="close-private-${selectedUser}" value="X"/>
-                <h3>${selectedUser}</h3>
-            </div>
+            <input type="button" class="btn-close" id="close-private-${selectedUser}"/>
+            
+            <h3 class="private-chat-header"><img src="../img/keithsHat.jpeg">${selectedUser}</h3>
+            
             <ul class="message-window" id="private-messagesList-${selectedUser}"></ul>
             <form id="private-chat-form-${selectedUser}">
                 <input type="text" class="private-chat-form" id="private-messageInput-${selectedUser}" placeholder="Type Message Here" />
@@ -135,7 +135,7 @@ function createPrivateChatBox(selectedUser) {
                 <input type="submit" id="private-sendButton-${selectedUser}" value="Send Message" />
             </form>
         `;
-
+      
         // Add the chat box to the container
         chatContainer.appendChild(chatBox);
 

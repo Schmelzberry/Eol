@@ -17,6 +17,27 @@ body {
   margin-bottom: 60px;
 }
 
+.usersContainer {
+  float: left;
+  width: 20%;
+  margin: 2%;
+  position: fixed;
+}
+
+.publicContainer {
+  float: left;
+  width: 45%;
+  margin: 2%;
+  position: fixed;
+}
+
+.privateContainer {
+  float: left;
+  width: 25%;
+  margin: 2%;
+  position: fixed;
+}
+
 #messagesList {
   height: 300px;
   width: 80%;
@@ -30,12 +51,15 @@ body {
   border-radius: 10px;
 }
 
-.container {
+/* .container {
   margin: 0;
-}
+} */
 .private-chat-form {
-  width: 100%;
+  width: 97%;
   height: 50px;
+  outline: none;
+  outline-color: #B2B1B3;
+  margin: auto;
 }
 .private-chat-box {
   border: solid;
@@ -45,26 +69,31 @@ body {
   margin-bottom: 10px;
   resize: none;
   overflow: auto;
+  background-color: #B2B1B3;
   
 }
 .private-chat-header {
   width: 100%;
   font-size: 1.3rem;
   color: #B2B1B3;
-  background-color: #14017A;
+  background-color: #344AFB;
 }
 .message-window {
   border: solid;
   border-width: 1px;
   border-color: #B2B1B3;
-  width: 100%;
+  width: 97%;
   height: 150px;
   resize: none;
   overflow: auto;
+  border-radius: 1px;
+  background-color: white;
+  margin: auto;
 }
-.exit-button {
+.btn-close {
   float: right;
-  /* background-image: url('~/img/close-icon.svg'); */
+  background-image: url('../img/close-icon.svg');
+  color: black;
 }
 
 /* #box1 {
@@ -75,8 +104,20 @@ body {
 /* allow for text to overflow along the y-axis, behavior is set equal to scroll*/
 /* overflow-y: scroll; */
 
+.card-body {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0 15px;
+}
+
 #nav-container {
   display: flex;
   flex-direction: row;
   flex-direction: row-reverse;
 }
+
+
+
+
+
