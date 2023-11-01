@@ -3,40 +3,34 @@
 }
 <!-- // atSymbol Page was here (if anything breaks) -->
 <div class="container">
-    <!-- <div class="row p-1">
-        <div class="col-6">
-            <hr />
-        </div>
-    </div>
-    <div class="row p-1"> -->
-
+    <div class="row p-1">
         <div class="col-3">
             <h5>Online Users</h5>
             <ul id="online-users"></ul>
         </div>
-
+        
         <div class="col-4">
             <ul id="messagesList"></ul>
                 <form id="chat-form">
-        <div class="row p-1">
+        <!-- <div class="row p-1"> -->
             <div class="col-1">Hello @User.Identity.Name</div>
             <div class="col-5"><input type="hidden" id="userInput" value="@User.Identity.Name" /></div>
-        </div>
-        <div class="row p-1">
+        <!-- </div> -->
+        <!-- <div class="row p-1"> -->
             <!-- <div class="col-1">Message</div> -->
             <div class="col-5"><input type="text" class="w-100" id="messageInput" placeholder="Type Message Here" />
             </div>
-        </div>
-        <div class="row p-1">
+        <!-- </div> -->
+        <!-- <div class="row p-1"> -->
             <div class="col-6 text-end">
                 <input type="submit" id="sendButton" value="Send Message" />
             </div>
-        </div>
+        <!-- </div> -->
     </form>
         </div>
        
        
-        <div  class="col-4">
+        <div class="col-4">
             <!-- <h3>Private Chat</h3> -->
             <div id="private-chat-container">            
             <!-- class="private-chat-box" for the private chats that are made-->
@@ -44,6 +38,10 @@
         </div>
     
     </div>   
+
+
+</div>
+
 </div>
 
 <script src="~/js/signalr/dist/browser/signalr.js"></script>

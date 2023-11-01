@@ -12,7 +12,24 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" id="nav-container">
+            
+            <div class="card-body">
+                @if (User.Identity.IsAuthenticated)
+                {
+                <p>Hello @User.Identity.Name!</p>
+                @using(Html.BeginForm("LogOff", "Account"))
+                {
+                    <input type="submit" class="btn btn-primary" value="Log off" />
+                }
+                }
+                else 
+                {
+                <p>@Html.ActionLink("Register New Account", "Register")</p>
+                <p>@Html.ActionLink("Log In", "Login")</p>
+                }
+            </div>
+
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EOL</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"

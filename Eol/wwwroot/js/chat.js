@@ -124,7 +124,7 @@ function createPrivateChatBox(selectedUser) {
         chatBox.id = `private-chat-${selectedUser}`;
         chatBox.className = "private-chat-box";
         chatBox.innerHTML = `
-            <div class=class="private-chat-header">
+            <div class="private-chat-header">
                 <input type="button" class="exit-button" id="close-private-${selectedUser}" value="X"/>
                 <h3>${selectedUser}</h3>
             </div>
