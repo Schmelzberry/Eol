@@ -2,16 +2,34 @@
     ViewData["Title"] = "Home Page";
 }
 
-@if (User.Identity.IsAuthenticated)
-{
-  <p>Hello @User.Identity.Name!</p>
-  @using(Html.BeginForm("LogOff", "Account"))
-  {
-    <input type="submit" class="btn btn-primary" value="Log off" />
-  }
-}
-else 
-{
-  <p>@Html.ActionLink("Register a new account", "Register")</p>
-  <p>@Html.ActionLink("Log in", "Login")</p>
-}
+<div class="row justify-content-center register-page">
+
+  <div class="container col-4">
+    <div class="card">
+      <div class="card-header">
+        Manage Account
+      </div>
+      <div class="card-body" style="text-align:center;">
+        <br/>
+        EOL LOGO HERE?
+        <br/>
+        <hr/>
+      </div>
+      <div class="card-body">
+        @if (User.Identity.IsAuthenticated)
+        {
+          <p>Hello @User.Identity.Name!</p>
+          @using(Html.BeginForm("LogOff", "Account"))
+          {
+            <input type="submit" class="btn btn-primary" value="Log off" />
+          }
+        }
+        else 
+        {
+          <p>@Html.ActionLink("Register New Account", "Register")</p>
+          <p>@Html.ActionLink("Log In", "Login")</p>
+        }
+      </div>
+    </div>
+  </div>
+</div>
