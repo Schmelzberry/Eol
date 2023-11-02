@@ -11,9 +11,9 @@
 </head>
 
 <body>
+
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3" id="nav-container">
-
             <div class="card-body">
                 @if (User.Identity.IsAuthenticated)
                 {
@@ -23,12 +23,12 @@
                         <input type="submit" value="Log off" />
                     }
                 }
-                else
+                <!-- else
                 {
-                    <p>@Html.ActionLink("Register / ", "Register")</p>
+                    <p>@Html.ActionLink("Register", "Register")</p>
 
-                    <p>@Html.ActionLink(" Log-In", "Login")</p>
-                }
+                    <p>@Html.ActionLink(" Login", "Login")</p>
+                } -->
             </div>
 
             <div class="container-fluid">

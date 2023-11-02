@@ -9,63 +9,37 @@ document.getElementById("userInput").focus();
 
 connection.on("ReceiveMessage", function (user, message) {
     var li = document.createElement("li");
-    document.getElementById("messagesList").appendChild(li);
+    // document.getElementById("messagesList").appendChild(li);
+
+    let anchor = document.getElementById("anchor");
+    let messageBox = document.getElementById("messagesList");
+    messageBox.insertBefore(li, anchor);
+
     // We can assign user-supplied strings to an element's textContent because it
     // is not interpreted as markup. If you're assigning in any other way, you 
     // should be aware of possible script injection concerns.
     li.innerHTML = `<span class="chatroom-sender">${user}</span>: <span class="chatroom-message">${message}</span>`;
+    messageBox.scrollTop = messageBox.scrollHeight;
 });
 
 connection.on("ReceiveOwnPrivateMessage", function(selectedUser, fromUser, message) {
     var li = document.createElement("li");
-    document.getElementById(`private-messagesList-${selectedUser}`).appendChild(li);
+    let privateBox = document.getElementById(`private-messagesList-${selectedUser}`);
+    privateBox.appendChild(li);
 
     li.innerHTML = `<span class="p-message-author text-primary">${fromUser}</span>: ${message}`;
+    privateBox.scrollTop = privateBox.scrollHeight;
 });
 
 connection.on("ReceivePrivateMessage", function (selectedUser, fromUser, message) {
     var li = document.createElement("li");
-    // const chatContainer = document.getElementById("private-chat-container");
-    // const existingChatBox = document.getElementById(`private-chat-${fromUser}`);
-    // if (!existingChatBox) {
-    //     const chatBox = document.createElement("div");
-    //     chatBox.id = `private-chat-${fromUser}`;
-    //     chatBox.className = "private-chat-box";
-    //     chatBox.innerHTML = `
-    //         <input type="button" id="close-private-${fromUser}" value="X" />
-    //         <h3>Private Chat with ${fromUser}</h3>
-    //         <ul id="private-messagesList-${fromUser}"></ul>
-    //         <form id="private-chat-form-${fromUser}">
-    //             <input type="text" id="private-messageInput-${fromUser}" placeholder="Type Message..." />
-    //             <input type="submit" id="private-sendButton-${fromUser}" value="Send Message" />
-    //         </form>
-    //     `;
-    //     // Add the chat box to the container
-    //     chatContainer.appendChild(chatBox);
-
-    //     // Add an event listener to the new chat box to send private messages
-    //     const chatForm = document.getElementById(`private-chat-form-${fromUser}`);
-    //     chatForm.addEventListener("submit", function (event) {
-    //         event.preventDefault();
-    //         const message = document.getElementById(`private-messageInput-${fromUser}`).value;
-    //         connection.invoke("SendPrivateMessage", fromUser, message).catch(function (err) {
-    //             return console.error(err.toString());
-    //         });
-    //         document.getElementById(`private-messageInput-${fromUser}`).value = null;
-    //     });
-
-    //     const closeBtn = document.getElementById(`close-private-${selectedUser}`);
-    //     closeBtn.addEventListener("click", function() {
-    //         closeBtn.parentElement.remove();
-    //     });
-
-    //     document.getElementById(`private-messagesList-${fromUser}`).appendChild(li);
-    // }
     
     createPrivateChatBox(fromUser);
-
-    document.getElementById(`private-messagesList-${fromUser}`).appendChild(li);
+    let privateBox = document.getElementById(`private-messagesList-${fromUser}`);
+    privateBox.appendChild(li);
+    
     li.innerHTML = `<span class="p-message-author text-danger">${fromUser}</span>: ${message}`;
+    privateBox.scrollTop = privateBox.scrollHeight;
 });
 
 // connection.on("UserConnected", function(userName) {
@@ -82,9 +56,15 @@ connection.on("ReceivePrivateMessage", function (selectedUser, fromUser, message
     const onlineUsersList = document.getElementById("online-users");
     onlineUsersList.innerHTML = ''; // Clear the list before updating
     
+    
+    
     users.forEach(function (user) {
         const listItem = document.createElement("li");
         listItem.textContent = user;
+        //  if (ChatHub.Context.User === user) {
+        //  onlineUsersList.removeChild(user)
+        // } 
+        // else {
         onlineUsersList.appendChild(listItem);
     });
 });
@@ -101,11 +81,19 @@ connection.start().then(function () {
 
     // Get the list of online users
     const onlineUsersList = document.getElementById("online-users");
-
+    // Get the name of the current user:
+    const currentUser = document.getElementById("userInput").value;
     // Add a click event listener to each user in the list
     onlineUsersList.addEventListener("click", function (event) {
         if (event.target.tagName === "LI") {
             const selectedUser = event.target.textContent;
+            
+            // If the user clicks on someone OTHER than themselves,
+            // start a private chat.
+            // if (currentUser != selectedUser) {
+            //     createPrivateChatBox(selectedUser);
+            // }
+
             createPrivateChatBox(selectedUser);
         }
     });

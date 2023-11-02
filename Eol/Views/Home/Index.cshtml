@@ -14,14 +14,16 @@
         <h5 class="heading">Public Chat</h5>
         <div class="inner-white-box public-box">
             <div class="body-logo">
-                <ul id="messagesList"></ul>
+                <ul id="messagesList">
+                    <span id="anchor"></span>
+                </ul>
             </div>
-            <form id="chat-form" class="message-input">
-                <input type="hidden" id="userInput" value="@User.Identity.Name" />
-                <input type="text" class="w-100" id="messageInput" placeholder="Type Message..." />
-                <input type="submit" id="sendButton" value="Send" />
-            </form>
         </div>
+        <form id="chat-form" class="message-input">
+            <input type="hidden" id="userInput" value="@User.Identity.Name" />
+            <input type="text" class="w-100" id="messageInput" placeholder="Type Message..." />
+            <input type="submit" id="sendButton" value="Send" />
+        </form>
     </div>
     <div class="privateContainer">
         <h5 class="heading private-heading">Private Chats</h5>

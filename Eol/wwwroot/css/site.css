@@ -20,16 +20,17 @@ html {
 body {
   margin-bottom: 60px;
   background-color: #EBE8DA;
-  /* background-image: url('../img/EOL.svg');
-  background-size: 2%; */
+  /* background-size: 2%; */
   /* background-color: #EBE8DA; */
+  background-image: url(../img/windows_xp.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 a {
   color: black;
 }
-
-
 
 .main-body {
   width: 100%;
@@ -46,10 +47,11 @@ a {
   margin: 2%;
   margin-right: 1%;
   background-color: #dedbcc;
-  border-bottom: solid #313131 5px;
-  border-right: solid #313131 5px;
-  border-top: solid #a1a1a1 5px;
-  border-left: solid #a1a1a1 5px;
+  border-bottom: solid #3F4CBA 3px;
+  border-right: solid #3F4CBA 3px;
+  border-top: solid #344AFB 3px;
+  border-left: solid #344AFB 3px;
+  border-radius: 10px 10px 0px 0px;
   box-sizing: border-box;
 }
 
@@ -59,10 +61,11 @@ a {
   margin: 2%;
   margin-right: 1%;
   background-color: #dedbcc;
-  border-bottom: solid #313131 5px;
-  border-right: solid #313131 5px;
-  border-top: solid #a1a1a1 5px;
-  border-left: solid #a1a1a1 5px;
+  border-bottom: solid #3F4CBA 3px;
+  border-right: solid #3F4CBA 3px;
+  border-top: solid #344AFB 3px;
+  border-left: solid #344AFB 3px;
+  border-radius: 10px 10px 0px 0px;
   box-sizing: border-box;
 }
 
@@ -71,37 +74,28 @@ a {
   width: 22%;
   margin: 2%;
   background-color: #dedbcc;
-  border-bottom: solid #313131 5px;
-  border-right: solid #313131 5px;
-  border-top: solid #a1a1a1 5px;
-  border-left: solid #a1a1a1 5px;
+  border-bottom: solid #3F4CBA 3px;
+  border-right: solid #3F4CBA 3px;
+  border-top: solid #344AFB 3px;
+  border-left: solid #344AFB 3px;
+  border-radius: 10px 10px 0px 0px;
   box-sizing: border-box;
 }
 
 .heading{
-  text-align: center;
-  margin-top: 2%;
-  margin-left: 3%;
-  margin-bottom: 0;
+  text-align: left;
+  margin: 0;
+  margin-bottom: 20px;
   font-family: Arial, sans-serif;
-  background-image: linear-gradient(to bottom right, #344AFB, #152eea);
-  /* background-color: #344AFB; */
-  border: solid #152eea; 
-  border-radius: 0px 7px 0px 0px;
+  background-image: linear-gradient(to bottom right, #448EEA, #3F4CBA);
+  border-bottom: solid #152eea 2px; 
+  border-radius: 7px 7px 0px 0px;
   font-size: 15px;
   color: white;
-  width: 130px;
+  height: 40px;
+  width: 100%;
   padding: 5px;
-}
-
-.users-heading {
-  margin-top: 6%;
-  margin-left: 6%;
-}
-
-.private-heading {
-  margin-top: 5%;
-  margin-left: 5%;
+  padding-top: 10px;
 }
 
 .inner-white-box {
@@ -116,13 +110,6 @@ a {
   border-right: solid #c5c5c5 3px;
 }
 
-
-.users-box {
-  margin-left: 6%;
-  width: 88%;
-  height: 88%;
-}
-
 .users-box ul {
   padding-top: 2%;
   padding-bottom: 2%;
@@ -130,6 +117,13 @@ a {
   padding-left: 15px;
   overflow: auto;
   overflow-y: scroll;
+}
+
+.users-box {
+  margin-left: 6%;
+  width: 88%;
+  height: 82%;
+  margin-bottom: 10%;
 }
 
 /* remove default bullets, replace with custom green bullets */
@@ -154,7 +148,7 @@ a {
 .private-box {
   margin-left: 5%;
   width: 88%;
-  height: 430px;
+  height: 420px;
   overflow: auto;
   overflow-y: scroll;
 }
@@ -170,6 +164,15 @@ a {
   overflow-y: scroll;
   margin-left: -25px;
   list-style: none;
+}
+
+#messageList * {
+  overflow-anchor: none;
+}
+
+#anchor {
+  overflow-anchor: auto;
+  height: 2px;
 }
 
 #messageList li {
@@ -215,7 +218,11 @@ a {
   margin: auto;
 }
 .private-chat-box {
-  border: solid;
+  border-bottom: solid #3F4CBA 3px;
+  border-right: solid #3F4CBA 3px;
+  border-top: solid #344AFB 3px;
+  border-left: solid #344AFB 3px;
+  border-radius: 7px 7px 0px 0px;
   height: auto;
   margin: auto;
   margin-top: 10px;
@@ -230,7 +237,9 @@ a {
   font-size: 1rem;
   padding: 3px;
   color: white;
-  background-color: #344AFB;
+  background-image: linear-gradient(to bottom right, #448EEA, #3F4CBA);
+  border-bottom: solid #152eea 2px; 
+  border-radius: 4px 4px 0px 0px;
 }
 .message-window {
   border: solid;
@@ -280,14 +289,14 @@ a {
 }
 
 .card-body p {
-  width: 100px;
+  width: 200px;
   display: flex;
   margin-top: 5%;
   color: white;
 }
 
 .card-body input[type="submit"] { 
-  margin-top: 12%;
+  margin-top: 15%;
   border-bottom: solid #313131 2px;
   border-right: solid #313131 2px;
   border-top: solid #a1a1a1 2px;
@@ -299,8 +308,8 @@ a {
   flex-direction: row;
   flex-direction: row-reverse;
   /* background-color: #344AFB; */
-  background-image: linear-gradient(to bottom right, #344AFB, #1d33dc);
-  border-bottom:solid rgb(12, 36, 217) 2px;
+  background-image: linear-gradient(to bottom right, #448EEA, #3F4CBA);
+  border-bottom: solid #152eea 2px; 
   height: 55px;
 }
 
@@ -328,14 +337,14 @@ a {
 }
 
 .footer {
-  color: black;
+  color: white;
   border: none;
   padding-left: 2%;
   text-align: left;
 }
 
 .footer a {
-  color: black;
+  color: white;
 }
 
 /* LOGIN & REGISTER FORM */
@@ -395,9 +404,8 @@ a {
   padding: 10px;
 }
 
-
 .btn-login, .btn-register {
-  background-color: #344AFB;
+  background-color: #6374f3;
   color: white;
   font-weight: bold;
   width: 95%;
