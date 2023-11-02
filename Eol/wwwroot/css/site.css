@@ -269,7 +269,7 @@ a {
 .btn-close {
   float: right;
   background-image: url('../img/close-icon.svg');
-  color: black;
+  color: red;
 }
 
 
@@ -282,7 +282,7 @@ a {
 /* overflow-y: scroll; */
 
 .card-body {
-  display: flex;
+  /* display: flex; */
   flex-direction: row;
   padding: 0;
   margin: 0 15px;
@@ -296,6 +296,50 @@ a {
 }
 
 .card-body input[type="submit"] { 
+  margin-top: 15%;
+  border-bottom: solid #313131 2px;
+  border-right: solid #313131 2px;
+  border-top: solid #a1a1a1 2px;
+  border-left: solid #a1a1a1 2px;
+}
+
+.account-body {
+  /* display: flex; */
+  flex-direction: row;
+  padding: 0;
+  margin: 0 15px;
+}
+
+.account-body p {
+  width: 200px;
+  display: flex;
+  margin-top: 5%;
+  color: white;
+}
+
+.account-body input[type="submit"] { 
+  margin-left: 42%;
+  border-bottom: solid #313131 2px;
+  border-right: solid #313131 2px;
+  border-top: solid #a1a1a1 2px;
+  border-left: solid #a1a1a1 2px;
+}
+
+.header-body {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  margin-right: 2%;
+}
+
+.header-body p {
+  width: 200px;
+  display: flex;
+  margin-top: 5%;
+  color: white;
+}
+
+.header-body input[type="submit"] { 
   margin-top: 15%;
   border-bottom: solid #313131 2px;
   border-right: solid #313131 2px;
@@ -349,14 +393,17 @@ a {
 
 /* LOGIN & REGISTER FORM */
 .register-card, .login-card {
-  background-color: #B2B1B3;
-  border-bottom: solid #313131 3px;
-  border-right: solid #313131 3px;
-  border-top: solid #a1a1a1 3px;
-  border-left: solid #a1a1a1 3px;
+  background-color: #dedbcc;
+  border-bottom: solid #3F4CBA 3px;
+  border-right: solid #3F4CBA 3px;
+  border-top: solid #344AFB 3px;
+  border-left: solid #344AFB 3px;
+  border-radius: 7px 7px 0px 0px;
   box-sizing: border-box;
+  width: 80%;
 }
 
+/* the divider between logo and form */
 .divider {
   width: 95%;
   height: 1px;
@@ -375,7 +422,7 @@ a {
   border-top: solid #313131 3px;
   border-bottom: solid #e3dddd 3px;
   border-right: solid #e3dddd 3px;
-  /* width: 65%; */
+  width: 100%;
 }
 
 .account-label {
@@ -385,9 +432,11 @@ a {
 }
 
 .login-banner, .register-banner, .error-banner {
-  width: 106%;
-  margin-left: -13px;
-  background-color: #344AFB;
+  width: 100%;
+  /* margin-left: -13px; */
+  background-image: linear-gradient(to bottom right, #448EEA, #3F4CBA);
+  border-bottom: solid #152eea 2px; 
+  border-radius: 4px 4px 0px 0px;
   color: white;
   font-weight: bold;
   padding-left: 10px;
@@ -397,20 +446,30 @@ a {
 
 .login-links, .register-links {
   /* text-align: right; */
-  width: 80%;
+  /* width: 80%; */
+  width: 100%;
 }
 
-.login-links a, .register-links a {
+.login-links a {
   padding: 10px;
+  padding-left: 18%;
+  text-align: center;
+} 
+
+.register-links a {
+  padding: 10px;
+  padding-left: 25%;
+  text-align: center;
 }
 
 .btn-login, .btn-register {
-  background-color: #6374f3;
+  background-image: linear-gradient(to bottom right, #448EEA, #3F4CBA);
   color: white;
   font-weight: bold;
   width: 95%;
   height: 45px;
   margin: 10px auto;
+  /* margin-left: 50px; */
 }
 
 
@@ -421,11 +480,11 @@ a {
 
 /* VALIDATION ERROR CARDS */
 .error-card {
-  background-color: #B2B1B3;
-  border-bottom: solid #313131 3px;
-  border-right: solid #313131 3px;
-  border-top: solid #a1a1a1 3px;
-  border-left: solid #a1a1a1 3px;
+  background-color: #dedbcc;
+  border-bottom: solid #3F4CBA 3px;
+  border-right: solid #3F4CBA 3px;
+  border-top: solid #344AFB 3px;
+  border-left: solid #344AFB 3px;
   box-sizing: border-box;
 }
 .close-error a{

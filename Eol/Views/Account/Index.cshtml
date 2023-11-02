@@ -19,14 +19,12 @@
           <h4>Account</h4>
         }
       </div>
-      <div class="card-body" style="text-align:center;">
-        <hr />
+      <div class="account-body" style="text-align:center;">
       </div>
-      <div class="card-body">
+      <div class="account-body">
         @if (User.Identity.IsAuthenticated)
         {
           <p>Going Somewhere?</p>
-          <br>
           @using (Html.BeginForm("LogOff", "Account"))
           {
             <input type="submit" class="" value="Log off" />

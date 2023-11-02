@@ -37,27 +37,15 @@ connection.on("ReceivePrivateMessage", function (selectedUser, fromUser, message
     createPrivateChatBox(fromUser);
     let privateBox = document.getElementById(`private-messagesList-${fromUser}`);
     privateBox.appendChild(li);
-    
+
     li.innerHTML = `<span class="p-message-author text-danger">${fromUser}</span>: ${message}`;
     privateBox.scrollTop = privateBox.scrollHeight;
 });
 
-// connection.on("UserConnected", function(userName) {
-//     // let onlineUserList = document.getElementById("online-users");
-//     let li = document.createElement("li");
-//     document.getElementById("online-users").appendChild(li);
+connection.on("ConnectedUsers", function (users) {
+const onlineUsersList = document.getElementById("online-users");
+onlineUsersList.innerHTML = ''; // Clear the list before updating
 
-//     li.textContent = userName;
-
-//     // onlineUserList.appendChild(listItem);
-// });
-
-    connection.on("ConnectedUsers", function (users) {
-    const onlineUsersList = document.getElementById("online-users");
-    onlineUsersList.innerHTML = ''; // Clear the list before updating
-    
-    
-    
     users.forEach(function (user) {
         const listItem = document.createElement("li");
         listItem.textContent = user;
@@ -68,12 +56,6 @@ connection.on("ReceivePrivateMessage", function (selectedUser, fromUser, message
         onlineUsersList.appendChild(listItem);
     });
 });
-
-// connection.start().then(function () {
-//     document.getElementById("sendButton").disabled = false;
-// }).catch(function (err) {
-//     return console.error(err.toString());
-// });
 
 // Add this code within your connection.start() callback in chat.js
 connection.start().then(function () {
@@ -122,7 +104,7 @@ function createPrivateChatBox(selectedUser) {
                 <input type="submit" id="private-sendButton-${selectedUser}" value="Send"/>
             </form>
         `;
-      
+        
         // Add the chat box to the container
         chatContainer.appendChild(chatBox);
 
