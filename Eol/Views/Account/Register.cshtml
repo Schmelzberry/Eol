@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Home Page";
+  ViewData["Title"] = "Home Page";
 }
 
 @using Eol.ViewModels
@@ -8,8 +8,8 @@
 <!-- <h2>Register a new user</h2>
 <hr/> -->
 
-<br/>
-<br/>
+<br />
+<br />
 
 <div class="row justify-content-center register-page">
 
@@ -20,61 +20,73 @@
           Register
         </div>
       </div>
-      <div class="card-body" style="text-align:center;">
-        <br/>
-        EOL LOGO HERE?
-        <br/>
-        <hr/>
+      <div class="form-logo card-body" style="text-align:center;">
+        <br />
+        <img src="~/img/EOL.svg" style="width: 175px; margin: 10px auto;">
+        <br />
+        <hr />
+      </div>
+      <div class="card-body divider">
       </div>
       <div class="card-body">
         @using (Html.BeginForm("Register", "Account", FormMethod.Post))
         {
           @Html.LabelFor(user => user.UserName)
-          <br/>
-          @Html.TextBoxFor(user => user.UserName, new { @class="form-control account-input" })
-          <br/>
+          <br />
+          @Html.TextBoxFor(user => user.UserName, new { @class = "form-control account-input" })
+          <br />
           @Html.LabelFor(user => user.Email)
-          <br/>
-          @Html.TextBoxFor(user => user.Email, new { @class="form-control account-input" })
-          <br/>
+          <br />
+          @Html.TextBoxFor(user => user.Email, new { @class = "form-control account-input" })
+          <br />
           @Html.LabelFor(user => user.Password)
-          <br/>
-          @Html.EditorFor(user => user.Password, new { htmlAttributes = new { @class="form-control account-input" }})
+          <br />
+          @Html.EditorFor(user => user.Password, new { htmlAttributes = new { @class = "form-control account-input" } })
           @Html.LabelFor(user => user.ConfirmPassword)
-          <br/>
-          @Html.EditorFor(user => user.ConfirmPassword, new { htmlAttributes = new { @class="form-control account-input" }})
-          <br/>
-          <br/>
+          <br />
+          @Html.EditorFor(user => user.ConfirmPassword, new
+            {
+              htmlAttributes = new
+              {
+                @class = "form-control account-input"
+              }
+            })
+          <br />
+          <br />
           <div class="register-links">
-            <input type="submit" value="Register" class="btn-lg btn-register"/>
-            <br/>
-            <br/>
-            <p>@Html.ActionLink("Log In", "Login")</p>
-            <p>@Html.ActionLink("Go Back", "Index")</p>
+            <input type="submit" value="Register" class="btn-register" />
+            @Html.ActionLink("Back", "Index")
+            @Html.ActionLink("Log In", "Login")
+            <br />
+            <br />
           </div>
         }
+      </div>
     </div>
+    <br />
   </div>
-  <br/>
-  </div>
-  
-  @if(!ViewData.ModelState.IsValid)
-    {
-      <div class="container col-4">
-        <div class="card error-card">
-          <div class="card-header">
-            <div class="error-banner">
-              Registration Error
-              <span class="close-error" style="float: right;">
-                @Html.ActionLink("X", "Register")
-              </span>
-            </div>
-          </div>
-          <div class="card-body">
-            @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:", new { @class = "text-danger" })
+
+  @if (!ViewData.ModelState.IsValid)
+  {
+    <div class="container col-4">
+      <div class="card error-card">
+        <div class="card-header">
+          <div class="error-banner">
+            Registration Error
+            <span class="close-error" style="float: right;">
+              @Html.ActionLink("X", "Register")
+            </span>
           </div>
         </div>
+        <div class="card-body">
+          @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:", new
+            {
+              @class =
+                 "text-danger"
+            })
+        </div>
       </div>
-    }
+    </div>
+  }
 
 </div>

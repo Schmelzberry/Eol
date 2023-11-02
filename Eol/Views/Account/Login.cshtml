@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Home Page";
+  ViewData["Title"] = "Home Page";
 }
 
 @using Eol.ViewModels
@@ -8,8 +8,8 @@
 
 <!-- <h2>Log in with your account</h2>
 <hr/> -->
-<br/>
-<br/>
+<br />
+<br />
 
 <div class="row justify-content-center login-page">
   <div class="container col-4">
@@ -19,52 +19,64 @@
           Log In
         </div>
       </div>
-      <div class="card-body" style="text-align:center;">
-        <br/>
-        EOL LOGO HERE?
-        <br/>
-        <hr/>
+      <div class="form-logo card-body" style="text-align:center;">
+        <br />
+        <!-- <img src="~/img/EOL-NEW-SVG.svg" style="width: 240px; margin: 10px auto;"> -->
+        <img src="~/img/EOL.svg" style="width: 175px; margin: 10px auto;">
+        <br />
+      </div>
+      <div class="card-body divider">
       </div>
       <div class="card-body">
         @using (Html.BeginForm())
         {
-          @Html.LabelFor(m => m.UserName, new { @class="account-label" })
-          @Html.TextBoxFor(m => m.UserName, new { @class="form-control account-input login-input" })
-          <br/>
-          @Html.LabelFor(m => m.Password, new { @class="account-label" })
-          @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class="form-control account-input login-input" }})
-          <br/>
-          <br/>
+          @Html.LabelFor(m => m.UserName, new { @class = "account-label" })
+          @Html.TextBoxFor(m => m.UserName, new { @class = "form-control account-input login-input" })
+          <br />
+          @Html.LabelFor(m => m.Password, new { @class = "account-label" })
+          @Html.EditorFor(m => m.Password, new
+            {
+              htmlAttributes = new
+              {
+                @class = "form-control account-input login-input"
+              }
+            })
+          <br />
+          <br />
           <div class="login-links">
-            <input type="submit" value="Log In" class="btn-lg btn-login" />
-            <br/>
-            <br/>
-            <p>@Html.ActionLink("Register Account", "Register")</p>
-            <p>@Html.ActionLink("Go Back", "Index")</p>
+            <input type="submit" value="Log In" class="btn-login" />
+            @Html.ActionLink("Cancel", "Index")
+            @Html.ActionLink("Register Account", "Register")
+            <br />
+            <br />
           </div>
         }
       </div>
     </div>
-    <br/>
+    <br />
   </div>
 
-    @if(!ViewData.ModelState.IsValid)
-    {
-      <div class="container col-4">
-        <div class="card error-card">
-          <div class="card-header">
-            <div class="error-banner">
-              Log In Error
-              <span class="close-error" style="float: right;">
+  @if (!ViewData.ModelState.IsValid)
+  {
+    <div class="container col-4">
+      <div class="card error-card">
+        <div class="card-header">
+          <div class="error-banner">
+            Log In Error
+            <span class="close-error" style="float: right;">
               @Html.ActionLink("X", "Login")
-              </span>
-            </div>
-          </div>
-          <div class="card-body">
-            @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:", new { @class = "text-danger" })
+            </span>
           </div>
         </div>
+        <div class="card-body">
+          @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:", new
+            {
+              @class =
+                 "text-danger"
+            })
+        </div>
       </div>
-    }
+    </div>
+  }
 
 </div>

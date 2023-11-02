@@ -20,7 +20,7 @@ connection.on("ReceiveOwnPrivateMessage", function(selectedUser, fromUser, messa
     var li = document.createElement("li");
     document.getElementById(`private-messagesList-${selectedUser}`).appendChild(li);
 
-    li.innerHTML = `<span class="text-primary">${fromUser}</span>: ${message}`;
+    li.innerHTML = `<span class="p-message-author text-primary">${fromUser}</span>: ${message}`;
 });
 
 connection.on("ReceivePrivateMessage", function (selectedUser, fromUser, message) {
@@ -65,7 +65,7 @@ connection.on("ReceivePrivateMessage", function (selectedUser, fromUser, message
     createPrivateChatBox(fromUser);
 
     document.getElementById(`private-messagesList-${fromUser}`).appendChild(li);
-    li.innerHTML = `<span class="text-danger">${fromUser}</span>: ${message}`;
+    li.innerHTML = `<span class="p-message-author text-danger">${fromUser}</span>: ${message}`;
 });
 
 // connection.on("UserConnected", function(userName) {
@@ -126,13 +126,12 @@ function createPrivateChatBox(selectedUser) {
         chatBox.innerHTML = `
             <input type="button" class="btn-close" id="close-private-${selectedUser}"/>
             
-            <h3 class="private-chat-header"><img class="hat" src="../img/keithsHat.svg">${selectedUser}</h3>
+            <h3 class="private-chat-header">${selectedUser}</h3>
             
             <ul class="message-window" id="private-messagesList-${selectedUser}"></ul>
             <form id="private-chat-form-${selectedUser}" class="message-input">
                 <input type="text" class="private-chat-form" id="private-messageInput-${selectedUser}" placeholder="Type Message..." />
-                <br>
-                <input type="submit" id="private-sendButton-${selectedUser}" />
+                <input type="submit" id="private-sendButton-${selectedUser}" value="Send"/>
             </form>
         `;
       

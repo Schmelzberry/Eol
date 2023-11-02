@@ -22,8 +22,16 @@ namespace Eol.Controllers
       _db = db;
     }
 
-    public ActionResult Index()
+    public async Task<IActionResult> Index()
     {
+
+      string userName = User.Identity.Name;
+      if (userName != null)
+      {
+        ApplicationUser thisUser = await _userManager.FindByNameAsync(userName);
+        return View(thisUser);
+      }
+
       return View();
     }
 

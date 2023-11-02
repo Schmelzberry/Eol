@@ -1,56 +1,73 @@
 @{
-    ViewData["Title"] = "Home Page";
+  ViewData["Title"] = "Home Page";
 }
+@using Microsoft.AspNetCore.Identity;
+@using Eol.Models;
+@model Eol.Models.ApplicationUser
 
 <div class="row justify-content-center register-page">
 
   <div class="container col-4">
     <div class="card">
       <div class="card-header">
-        Manage Account
+        @if (User.Identity.IsAuthenticated)
+        {
+          <h4>@User.Identity.Name's Account</h4>
+        }
+        else
+        {
+          <h4>Account</h4>
+        }
       </div>
       <div class="card-body" style="text-align:center;">
-
-        <hr/>
+        <hr />
       </div>
       <div class="card-body">
         @if (User.Identity.IsAuthenticated)
         {
-          <p>Hello @User.Identity.Name!</p><br>
-          @using(Html.BeginForm("LogOff", "Account"))
+          <p>Going Somewhere?</p>
+
+          <br>
+          @using (Html.BeginForm("LogOff", "Account"))
           {
-             <br><input type="submit" class="btn btn-primary" value="Log off" />
+            <br>
+            <br>
+            <input type="submit" class="btn btn-primary" value="Log off" />
           }
         }
-        else 
+        else
         {
-          <p>@Html.ActionLink("Register New Account", "Register")</p>
-          <p>@Html.ActionLink("Log In", "Login")</p>
+          <div class="account-links">
+            <p>@Html.ActionLink("Log In", "Login")</p>
+            <p>@Html.ActionLink("Register New Account", "Register")</p>
+            <br>
+          </div>
         }
-      </div><hr>
-      <div class="container">
-      <h5 id="heading">Account Details:</h5>
-  
-      <ul>
-      <li><strong>Email:</strong> YoMamasHouse@Gottem.com </li>
-      <li><strong>Bio:</strong> Loving Life </li>
-      </ul>
-      <hr>
+      </div>
+      @if (User.Identity.IsAuthenticated)
+      {
+        <hr>
+        <div class="container">
+          <ul>
+            <li><strong>Email:</strong> @Model.Email </li>
+            <li><strong>Bio:</strong> Loving Life </li>
+          </ul>
+        </div>
+        <hr>
+        <div class="container">
+          <h5 id="heading">Friends:</h5>
+          <p>Check out a list of your friends below!(functionality WIP)</p>
+          <ul>
+            <li><a href="#">These Links Are Fake For Now</a></li>
+            <li><a href="#">These Links Are Fake For Now</a></li>
+            <li><a href="#">These Links Are Fake For Now</a></li>
+            <li><a href="#">These Links Are Fake For Now</a></li>
+          </ul>
+        </div>
+      }
+      <!-- STEP 1: Print a list of users below who exist in a friendship join table -->
+      <!-- STEP 2: Write a loop that then prints a list of all users who are online -->
+      <!-- STEP 3: Users should be able to clink on the names and join private chats with said friend  -->
+      <!-- STEP 4: Talk to your buds about high fives and other things that friends do-->
     </div>
-    <div class="container">
-      <h5 id="heading">Friends:</h5>
-      <p>Check out a list of your friends below!</p>
-      <ul>
-      <li><a href="#">These Links Are Fake AF For Now</a></li>
-      <li><a href="#">Chris Farley</a></li>
-      <li><a href="#">Matt Foley</a></li>
-      <li><a href="#">Tommy Callahan</a></li>
-      <li><a href="#">Mike Donnelly</a></li>
-      </ul>
-    </div>
-    <!-- STEP 1: Print a list of users below who exist in a friendship join table -->
-    <!-- STEP 2: Write a loop that then prints a list of all users who are online -->
-    <!-- STEP 3: Users should be able to clink on the names and join private chats with said friend  -->
-    <!-- STEP 4: Talk to your buds about high fives and other things that friends do-->
   </div>
-</div>

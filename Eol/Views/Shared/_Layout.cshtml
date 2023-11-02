@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,24 +13,26 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3" id="nav-container">
-            
+
             <div class="card-body">
                 @if (User.Identity.IsAuthenticated)
                 {
-                <p>Hello @User.Identity.Name!</p>
-                @using(Html.BeginForm("LogOff", "Account"))
-                {
-                    <input type="submit" class="btn btn-primary" value="Log off" />
+                    <p>Hello @User.Identity.Name!</p>
+                    @using (Html.BeginForm("LogOff", "Account"))
+                    {
+                        <input type="submit" value="Log off" />
+                    }
                 }
-                }
-                else 
+                else
                 {
-                <p>@Html.ActionLink("Register New Account", "Register")</p>
-                <p>@Html.ActionLink("Log In", "Login")</p>
+                    <p>@Html.ActionLink("Register / ", "Register")</p>
+
+                    <p>@Html.ActionLink(" Log-In", "Login")</p>
                 }
             </div>
 
             <div class="container-fluid">
+                <img src="~/img/EOL-NEW-SVG.svg" class="header-img">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Eol.</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,28 +41,24 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account"
-                                asp-action="Index">Account</a>
+                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Index">Account</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-        <main role="main">
-            @RenderBody()
-        </main>
+    <main role="main">
+        @RenderBody()
+    </main>
     <footer class="footer">
-        <div class="container">
-            &copy; 1993 - EOL - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+        &copy; 2003 - EOL - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

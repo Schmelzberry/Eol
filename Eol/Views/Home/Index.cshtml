@@ -2,18 +2,20 @@
     ViewData["Title"] = "Home Page";
 }
 <!-- // atSymbol Page was here (if anything breaks) -->
-<div class="main-body"> 
-    <div class="usersContainer"> 
+<div class="main-body">
+    <div class="usersContainer">
         <h5 class="heading users-heading">Online Users</h5>
         <div class="inner-white-box users-box">
             <ul id="online-users"></ul>
         </div>
     </div>
-        
-    <div class="publicContainer"> 
+
+    <div class="publicContainer">
         <h5 class="heading">Public Chat</h5>
-        <div class="inner-white-box">
-            <ul id="messagesList"></ul>
+        <div class="inner-white-box public-box">
+            <div class="body-logo">
+                <ul id="messagesList"></ul>
+            </div>
             <form id="chat-form" class="message-input">
                 <input type="hidden" id="userInput" value="@User.Identity.Name" />
                 <input type="text" class="w-100" id="messageInput" placeholder="Type Message..." />
@@ -21,9 +23,9 @@
             </form>
         </div>
     </div>
-    <div class="privateContainer"> 
+    <div class="privateContainer">
         <h5 class="heading private-heading">Private Chats</h5>
-        <div id="private-chat-container" class="inner-white-box private-box" >            
+        <div id="private-chat-container" class="inner-white-box private-box">
             <!-- class="private-chat-box" for the private chats that are made-->
         </div>
     </div>
