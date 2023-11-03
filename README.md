@@ -44,7 +44,7 @@
 
 ### 💻 Description
 
-An AIM-inspired message service that allows users to communicate real-time in a public chat room, or one-on-one in a private conversation with another user. 
+[Epicodus Online (EOL)](epicodus-online.azurewebsites.net) is an AIM-inspired message service that allows users to communicate real-time in a public chat room, or one-on-one in a private conversation with another user. 
 
 <img src="https://github.com/Schmelzberry/Eol/blob/main/Eol/wwwroot/img/eol-chat.png" alt="EOL chatroom.">
 
@@ -107,6 +107,7 @@ $ dotnet ef
 ```
 
 #### Install MySQL Workbench
+
 This project assumes you have MySQL Server and MySQL Workbench installed on your system. If you do not have these tools installed, follow along with the installation steps for the the necessary tools introduced in the series of lessons found here on [LearnHowToProgram](https://full-time.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-and-configuring-mysql).
 
 Or, [Download and install the appropriate version of MySQL Workbench](https://dev.mysql.com/downloads/workbench/).
@@ -162,6 +163,23 @@ To view or edit the code, you will need an code editor or text editor. The popul
   2) Run the command `dotnet ef database update` to generate the database through Entity Framework Core.
      1) (Optional) To update the database with any changes to the code, run the command `dotnet ef migrations add <MigrationsName>` which will use Entity Framework Core's code-first principle to generate a database update. 
   3) After, run the previous command `dotnet ef database update` to create and update the project database.
+
+#### Run the Application
+
+1) Now that everything is in place, all that's left to do is compile and launch the application. While in the project's main directory (e.g. `cd Desktop/Eol/Eol`), run the following command in your terminal:
+   
+   ```
+   $ dotnet watch run
+   ```
+  > Optionally, you can run `dotnet build` to compile this web app without running it.
+
+2) Open your browser to https://localhost:5001 to navigate and use the web application. 
+> If you cannot access localhost:5001 it is likely because you have not configured a .NET developer security certificate for HTTPS.
+
+##### Alternatively:
+
+1) You can access the web application directly via the following link: 
+   * https://epicodus-online.azurewebsites.net/
 
 ### ⚖️ License
 
